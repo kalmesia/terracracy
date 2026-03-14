@@ -13,136 +13,92 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>.</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{background:#0a0a08;height:100%;overflow:hidden}
-body{font-family:"Courier New",Courier,"Lucida Console",monospace;background:#0a0a08;height:100%;overflow:hidden;-webkit-font-smoothing:none;-moz-osx-font-smoothing:auto}
-::selection{background:#7a9a6a;color:#0a0a08}
-
-#birth{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:10;background:#0a0a08;padding:2rem;text-align:center}
-#birth-text{font-size:2.8em;color:#e8e8d8;letter-spacing:0.1em;line-height:1.4;opacity:0;transition:opacity 0.8s ease;max-width:90vw}
-@media(max-width:480px){#birth-text{font-size:1.6em}}
+html{background:#08080a;height:100%;overflow:hidden}
+body{font-family:"Courier New",Courier,"Lucida Console",monospace;background:#08080a;height:100%;overflow:hidden;-webkit-font-smoothing:none;-moz-osx-font-smoothing:auto}
+::selection{background:#7a9a6a;color:#08080a}
+#birth{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;z-index:10;background:#08080a;padding:2rem;text-align:center}
+#birth-text{font-size:2.6em;color:#e0e0d0;letter-spacing:0.08em;line-height:1.4;opacity:0;transition:opacity 0.7s ease;max-width:90vw}
+@media(max-width:480px){#birth-text{font-size:1.5em}}
 #birth-text.on{opacity:1}
-#birth-text.dim{color:#484838}
-#birth-text.took{color:#9a6a5a}
-#birth-text.big{font-size:3.5em}
-@media(max-width:480px){#birth-text.big{font-size:2em}}
-
-#skip{position:fixed;bottom:2rem;right:2rem;font-family:inherit;font-size:11px;letter-spacing:0.1em;background:none;border:none;color:#2a2a20;cursor:pointer;z-index:11;padding:0.5em}
-#skip:hover{color:#484838}
-
+#birth-text.dim{color:#606050}
+#birth-text.took{color:#c07060}
+#birth-text.big{font-size:3.2em}
+@media(max-width:480px){#birth-text.big{font-size:1.9em}}
+#skip{position:fixed;bottom:2rem;right:2rem;font-family:inherit;font-size:12px;letter-spacing:0.1em;background:none;border:1px solid #222;color:#555;cursor:pointer;z-index:11;padding:0.4em 1em}
+#skip:hover{color:#999;border-color:#444}
 #world{display:none;overflow-y:auto;height:100%}
 #world.on{display:block}
-.content{max-width:680px;margin:0 auto;padding:5rem 2rem 8rem;font-size:16px;line-height:2.2;color:#b0b098}
-@media(max-width:480px){.content{font-size:14px;padding:3rem 1.2rem 5rem;line-height:2}}
-
-.step{display:none}
-.step.on{display:block}
-.hr{height:1px;background:#1a1a15;margin:4rem 0;border:none}
-.element{display:block;font-size:6em;letter-spacing:0.15em;color:#e8e8d8;margin:1rem 0 0.3rem;line-height:1.1}
-@media(max-width:480px){.element{font-size:3.8em}}
-.question{display:block;color:#e8e8d8;font-size:1.4em;line-height:2;margin:1rem 0 0}
-@media(max-width:480px){.question{font-size:1.15em}}
-.w{color:#e8e8d8}
-.dim{color:#8a8a70;background:#1a1e14;padding:0.1em 0.4em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.mid{color:#c8c8a8;background:#1e2418;padding:0.1em 0.4em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.content{max-width:660px;margin:0 auto;padding:4rem 2rem 8rem;font-size:16px;line-height:2;color:#c0c0b0}
+@media(max-width:480px){.content{font-size:14px;padding:2.5rem 1.2rem 5rem;line-height:1.9}}
+.step{display:none}.step.on{display:block}
+.hr{height:1px;background:#1a1a18;margin:3.5rem 0;border:none}
+.element{display:block;font-size:5.5em;letter-spacing:0.12em;color:#e0e0d0;margin:1rem 0 0.5rem;line-height:1.1}
+@media(max-width:480px){.element{font-size:3.5em}}
+.question{display:block;color:#e0e0d0;font-size:1.3em;line-height:1.9;margin:0.8rem 0 0}
+@media(max-width:480px){.question{font-size:1.1em}}
+.w{color:#e0e0d0}
+.dim{color:#a0a090;background:#141612;padding:0.15em 0.5em;display:inline;line-height:2.4;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.mid{color:#d0d0b8;background:#181c14;padding:0.15em 0.5em;display:inline;line-height:2.4;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .hidden{display:none}
-
-.btns{margin-top:3rem;display:flex;gap:4px;align-items:stretch}
-.btn{font-family:inherit;font-size:1.8em;letter-spacing:0.3em;background:none;padding:1em 0;cursor:pointer;border:2px solid #222;flex:1;text-align:center;position:relative;overflow:hidden;transition:color 0.2s,background 0.2s}
-@media(max-width:480px){.btn{font-size:1.4em;padding:0.9em 0}}
-.btn:active{transform:scale(0.95)}
+.btns{margin-top:2.5rem;display:flex;gap:4px;align-items:stretch}
+.btn{font-family:inherit;font-size:1.7em;letter-spacing:0.25em;background:none;padding:0.9em 0;cursor:pointer;border:2px solid #222;flex:1;text-align:center;transition:color 0.2s,background 0.2s,border-color 0.2s}
+@media(max-width:480px){.btn{font-size:1.3em;padding:0.8em 0}}
+.btn:active{transform:scale(0.96)}
 .btn-y{color:#7a9a6a;border-color:#3a5a30}
-.btn-n{color:#9a6a5a;border-color:#5a3a28}
-.btn-y:hover,.btn-y.active{background:#7a9a6a;color:#0a0a08;border-color:#7a9a6a;transform:scale(1.03)}
-.btn-n:hover,.btn-n.active{background:#9a6a5a;color:#0a0a08;border-color:#9a6a5a;transform:scale(1.03)}
-
-.answer-zone{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:4rem 0 2rem}
+.btn-n{color:#b87868;border-color:#5a3a30}
+.btn-y:hover,.btn-y.active{background:#7a9a6a;color:#08080a;border-color:#7a9a6a}
+.btn-n:hover,.btn-n.active{background:#b87868;color:#08080a;border-color:#b87868}
+.answer-zone{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:3.5rem 0 2rem}
 .answer-zone.hidden{display:none}
-.a-word{font-size:7em;letter-spacing:0.2em;display:block;margin-bottom:1.5rem;line-height:1}
-@media(max-width:480px){.a-word{font-size:4em}}
-.a-y{color:#7a9a6a}
-.a-n{color:#9a6a5a}
-.a-main{display:block;color:#e8e8d8;font-size:1.5em;line-height:2;margin-bottom:2rem}
-@media(max-width:480px){.a-main{font-size:1.2em}}
-.a-body{display:inline;color:#c0c0a0;background:#181e14;padding:0.1em 0.4em;font-size:1.05em;line-height:2.8;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.a-gut{display:block;color:#e8e8d8;font-size:1.3em;line-height:2.2;margin-top:3rem;padding-top:2rem;border-top:1px solid #1a1a15}
-@media(max-width:480px){.a-gut{font-size:1.1em}}
-.a-knife{display:inline;color:#a09a80;background:#1e1a14;padding:0.1em 0.4em;font-size:0.85em;line-height:2.8;margin-top:2rem;font-style:italic;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-
-.next{margin-top:3rem;padding-top:2rem;border-top:1px solid #1a1a15}
-.btn-next{font-family:inherit;font-size:1em;letter-spacing:0.1em;background:none;border:2px solid #252520;color:#585848;padding:0.6em 1.8em;cursor:pointer;transition:color 0.15s,border-color 0.15s;animation:pulse-next 2s ease-in-out infinite}
-.btn-next:hover{color:#b0b098;border-color:#444;animation:none}
+.a-word{font-size:6em;letter-spacing:0.15em;display:block;margin-bottom:1.2rem;line-height:1}
+@media(max-width:480px){.a-word{font-size:3.5em}}
+.a-y{color:#7a9a6a}.a-n{color:#b87868}
+.a-main{display:block;color:#e0e0d0;font-size:1.4em;line-height:1.9;margin-bottom:1.5rem}
+@media(max-width:480px){.a-main{font-size:1.15em}}
+.a-body{display:inline;color:#c0c0a8;background:#141810;padding:0.15em 0.5em;font-size:1em;line-height:2.6;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.a-gut{display:block;color:#e0e0d0;font-size:1.2em;line-height:2;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #1a1a18}
+@media(max-width:480px){.a-gut{font-size:1.05em}}
+.a-knife{display:inline;color:#a8a090;background:#181610;padding:0.15em 0.5em;font-size:0.85em;line-height:2.6;margin-top:1.5rem;font-style:italic;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.next{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid #1a1a18}
+.btn-next{font-family:inherit;font-size:1em;letter-spacing:0.1em;background:none;border:2px solid #2a2a22;color:#6a6a58;padding:0.6em 1.8em;cursor:pointer;transition:color 0.15s,border-color 0.15s;animation:pulse-next 2.5s ease-in-out infinite}
+.btn-next:hover{color:#c0c0b0;border-color:#555;animation:none}
 .btn-next:active{transform:scale(0.97)}
-@keyframes pulse-next{
- 0%{border-color:#1a1a12;color:#3a3a28}
- 15%{border-color:#4a4a30;color:#7a7a58}
- 30%{border-color:#1a1a12;color:#3a3a28}
- 100%{border-color:#1a1a12;color:#3a3a28}
-}
-.voice{display:block;margin-top:1.5rem;font-size:0.7em;letter-spacing:0.15em;color:#3a3a28;animation:breathe 4s ease-in-out infinite;line-height:1.8}
-@keyframes breathe{
- 0%,100%{opacity:0.3}
- 50%{opacity:0.8}
-}
-
+@keyframes pulse-next{0%,100%{border-color:#1a1a14;color:#4a4a38}40%{border-color:#3a3a28;color:#7a7a60}}
+.voice{display:block;margin-top:1.2rem;font-size:0.7em;letter-spacing:0.12em;color:#4a4a38;animation:breathe 4s ease-in-out infinite;line-height:1.8}
+@keyframes breathe{0%,100%{opacity:0.4}50%{opacity:0.9}}
 .cur{animation:blink 1.3s step-end infinite;color:#7a9a6a}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .fade{animation:fi 0.6s ease}
 @keyframes fi{from{opacity:0}to{opacity:1}}
-.end{margin-top:4rem;padding-top:2rem;border-top:1px solid #1a1a15}
-
-.intro-mid{color:#c8c8a8;background:#1e2418;padding:0.15em 0.4em;font-size:1.1em;display:inline;line-height:2.6;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.intro-q{display:block;font-size:2.2em;color:#e8e8d8;letter-spacing:0.1em;margin-top:2rem;line-height:1.5}
-@media(max-width:480px){.intro-q{font-size:1.6em}}
+.end{margin-top:3rem;padding-top:1.5rem;border-top:1px solid #1a1a18}
+.end .dim{background:none;padding:0}
+.intro-mid{color:#c0c0a8;background:#181c14;padding:0.15em 0.5em;font-size:1.05em;display:inline;line-height:2.4;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.intro-q{display:block;font-size:2em;color:#e0e0d0;letter-spacing:0.08em;margin-top:1.5rem;line-height:1.4}
+@media(max-width:480px){.intro-q{font-size:1.5em}}
 </style>
 </head>
 <body>
-
-
-<!-- BIRTH -->
-<div id="birth">
-<div id="birth-text"></div>
-</div>
+<div id="birth"><div id="birth-text"></div></div>
 <button id="skip" onclick="endBirth()">SKIP</button>
-
-
-<!-- WORLD -->
-<div id="world">
-<div class="content">
-
+<div id="world"><div class="content">
 <div id="s0">
 <span class="intro-mid">THIS IS NOT A REVOLUTION.
 THIS IS NOT A MOVEMENT.
 THIS IS NOT A PRODUCT.</span>
-
 <span class="intro-q">THIS IS A QUESTION.</span>
-
-<div style="margin-top:3.5rem">
-<button class="btn-next" onclick="go(1)">CONTINUE _</button>
+<div style="margin-top:2.5rem"><button class="btn-next" onclick="go(1)">CONTINUE _</button></div>
 </div>
-</div>
-
-
-<!-- SOIL -->
 <div class="step" id="s1">
-<hr class="hr">
-<span class="element">SOIL.</span>
+<hr class="hr"><span class="element">SOIL.</span>
 <span class="question">IS IT MORE ALIVE
 AFTER YOU TOUCHED IT?</span>
-
-<div class="btns" id="b1">
-<button class="btn btn-y" id="b1y" onclick="pick(1,'y')">YES</button>
-<button class="btn btn-n" id="b1n" onclick="pick(1,'n')">NO</button>
-</div>
+<div class="btns" id="b1"><button class="btn btn-y" id="b1y" onclick="pick(1,'y')">YES</button><button class="btn btn-n" id="b1n" onclick="pick(1,'n')">NO</button></div>
 <span class="voice">THE EARTHWORM IS WAITING FOR YOUR ANSWER.
 THE ROOT IS WAITING. THE SEED IS WAITING.
 ANSWER.</span>
-
-<div class="answer-zone hidden" id="a1y">
-<span class="a-word a-y">YES.</span>
-<span class="a-main">YOU EAT.
+<div class="answer-zone hidden" id="a1y"><span class="a-word a-y">YES.</span><span class="a-main">YOU EAT.
 YOU SPEAK.
-YOU BELONG.</span>
-<span class="a-body">YOU TOUCHED THE EARTH AND IT GREW.
+YOU BELONG.</span><span class="a-body">YOU TOUCHED THE EARTH AND IT GREW.
 
 SOMETHING IS ALIVE RIGHT NOW
 BECAUSE YOUR HANDS WERE IN THE DIRT.
@@ -150,18 +106,11 @@ BECAUSE YOUR HANDS WERE IN THE DIRT.
 THAT IS THE OLDEST CONTRACT.
 OLDER THAN LANGUAGE.
 OLDER THAN MONEY.
-OLDER THAN EVERY LAW EVER WRITTEN.</span>
-<span class="a-gut">YOU KEPT IT.</span>
-<span class="a-knife">MOST PEOPLE ON THIS PLANET CANNOT SAY THIS.
+OLDER THAN EVERY LAW EVER WRITTEN.</span><span class="a-gut">YOU KEPT IT.</span><span class="a-knife">MOST PEOPLE ON THIS PLANET CANNOT SAY THIS.
 CAN YOU? HONESTLY?
-CLICK NO AND SEE WHAT YOU ALREADY KNOW.</span>
-</div>
-
-<div class="answer-zone hidden" id="a1n">
-<span class="a-word a-n">NO.</span>
-<span class="a-main">WHEN IS THE LAST TIME
-YOU TOUCHED SOIL?</span>
-<span class="a-body">NOT A HOUSEPLANT.
+CLICK NO AND SEE WHAT YOU ALREADY KNOW.</span></div>
+<div class="answer-zone hidden" id="a1n"><span class="a-word a-n">NO.</span><span class="a-main">WHEN IS THE LAST TIME
+YOU TOUCHED SOIL?</span><span class="a-body">NOT A HOUSEPLANT.
 NOT A PARK YOU WALKED THROUGH.
 NOT A GARDEN YOU LOOKED AT.
 
@@ -174,39 +123,22 @@ YOU CAN'T REMEMBER.
 BECAUSE IT NEVER HAPPENED.
 OR IT HAPPENED SO LONG AGO
 THAT YOUR HANDS HAVE FORGOTTEN
-WHAT THEY WERE MADE FOR.</span>
-<span class="a-gut">7 BILLION PEOPLE LIVE ON THIS PLANET.
+WHAT THEY WERE MADE FOR.</span><span class="a-gut">7 BILLION PEOPLE LIVE ON THIS PLANET.
 LESS THAN 1 BILLION TOUCHED LIVING SOIL THIS YEAR.
 
 YOU ARE STANDING ON THE THING THAT FEEDS YOU
-AND YOU TREAT IT LIKE A FLOOR.</span>
+AND YOU TREAT IT LIKE A FLOOR.</span></div>
+<div class="next hidden" id="nx1"><button class="btn-next" onclick="go(2)">NEXT QUESTION _</button></div>
 </div>
-
-<div class="next hidden" id="nx1">
-<button class="btn-next" onclick="go(2)">NEXT QUESTION _</button>
-</div>
-</div>
-
-
-<!-- WATER -->
 <div class="step" id="s2">
-<hr class="hr">
-<span class="element">WATER.</span>
+<hr class="hr"><span class="element">WATER.</span>
 <span class="question">IS IT CLEANER LEAVING
 THAN ARRIVING?</span>
-
-<div class="btns" id="b2">
-<button class="btn btn-y" id="b2y" onclick="pick(2,'y')">YES</button>
-<button class="btn btn-n" id="b2n" onclick="pick(2,'n')">NO</button>
-</div>
+<div class="btns" id="b2"><button class="btn btn-y" id="b2y" onclick="pick(2,'y')">YES</button><button class="btn btn-n" id="b2n" onclick="pick(2,'n')">NO</button></div>
 <span class="voice">THE RIVER IS ASKING.
 THE FISH IS ASKING. THE CHILD DOWNSTREAM IS ASKING.
 ANSWER.</span>
-
-<div class="answer-zone hidden" id="a2y">
-<span class="a-word a-y">YES.</span>
-<span class="a-main">THE RIVER TRUSTS YOU.</span>
-<span class="a-body">EVERYTHING DOWNSTREAM FROM YOU IS ALIVE
+<div class="answer-zone hidden" id="a2y"><span class="a-word a-y">YES.</span><span class="a-main">THE RIVER TRUSTS YOU.</span><span class="a-body">EVERYTHING DOWNSTREAM FROM YOU IS ALIVE
 BECAUSE OF HOW YOU LIVE.
 
 FISH BREATHE BECAUSE OF YOUR CHOICES.
@@ -217,16 +149,10 @@ TO TAKE THE EASY WAY.
 THAT IS POWER.
 REAL POWER.
 THE KIND NO ELECTION CAN GIVE YOU
-AND NO GOVERNMENT CAN TAKE AWAY.</span>
-<span class="a-knife">BE HONEST WITH YOURSELF.
-CLICK NO. LOOK AT WHAT YOU ACTUALLY DO.</span>
-</div>
-
-<div class="answer-zone hidden" id="a2n">
-<span class="a-word a-n">NO.</span>
-<span class="a-main">YOU KNOW WHAT LEAVES
-YOUR HOUSE EVERY DAY.</span>
-<span class="a-body">THE SHAMPOO.
+AND NO GOVERNMENT CAN TAKE AWAY.</span><span class="a-knife">BE HONEST WITH YOURSELF.
+CLICK NO. LOOK AT WHAT YOU ACTUALLY DO.</span></div>
+<div class="answer-zone hidden" id="a2n"><span class="a-word a-n">NO.</span><span class="a-main">YOU KNOW WHAT LEAVES
+YOUR HOUSE EVERY DAY.</span><span class="a-body">THE SHAMPOO.
 THE DETERGENT.
 THE BLEACH.
 THE PILLS.
@@ -248,40 +174,23 @@ A CHILD.
 A FISH.
 A FIELD.
 
-YOU JUST NEVER SEE THEM.</span>
-<span class="a-gut">YOU TURNED ON THE TAP THIS MORNING.
+YOU JUST NEVER SEE THEM.</span><span class="a-gut">YOU TURNED ON THE TAP THIS MORNING.
 CLEAN WATER CAME OUT.
 WHERE DID IT GO AFTER YOU USED IT?
 
 YOU DON'T KNOW.
-THAT IS THE PROBLEM.</span>
+THAT IS THE PROBLEM.</span></div>
+<div class="next hidden" id="nx2"><button class="btn-next" onclick="go(3)">NEXT QUESTION _</button></div>
 </div>
-
-<div class="next hidden" id="nx2">
-<button class="btn-next" onclick="go(3)">NEXT QUESTION _</button>
-</div>
-</div>
-
-
-<!-- SEED -->
 <div class="step" id="s3">
-<hr class="hr">
-<span class="element">SEED.</span>
+<hr class="hr"><span class="element">SEED.</span>
 <span class="question">DID YOU ADD MORE LIFE
 THAN YOU TOOK?</span>
-
-<div class="btns" id="b3">
-<button class="btn btn-y" id="b3y" onclick="pick(3,'y')">YES</button>
-<button class="btn btn-n" id="b3n" onclick="pick(3,'n')">NO</button>
-</div>
+<div class="btns" id="b3"><button class="btn btn-y" id="b3y" onclick="pick(3,'y')">YES</button><button class="btn btn-n" id="b3n" onclick="pick(3,'n')">NO</button></div>
 <span class="voice">THE FOREST THAT DOESN'T EXIST YET IS ASKING.
 YOUR GRANDCHILDREN ARE ASKING.
 ANSWER.</span>
-
-<div class="answer-zone hidden" id="a3y">
-<span class="a-word a-y">YES.</span>
-<span class="a-main">THE EARTH KNOWS YOUR NAME.</span>
-<span class="a-body">NOT THE NAME ON YOUR PASSPORT.
+<div class="answer-zone hidden" id="a3y"><span class="a-word a-y">YES.</span><span class="a-main">THE EARTH KNOWS YOUR NAME.</span><span class="a-body">NOT THE NAME ON YOUR PASSPORT.
 NOT YOUR SOCIAL MEDIA HANDLE.
 NOT THE NAME YOUR BOSS CALLS YOU.
 
@@ -293,17 +202,10 @@ THAT WILL OUTLIVE
 EVERY DOCUMENT YOU EVER SIGNED.
 
 SOMETHING IS GROWING RIGHT NOW
-BECAUSE YOU PUT IT THERE.</span>
-<span class="a-gut">THAT IS YOUR REAL SIGNATURE.</span>
-<span class="a-knife">CAN YOU NAME IT? CAN YOU POINT TO IT?
-IF NOT — CLICK NO. BE HONEST.</span>
-</div>
-
-<div class="answer-zone hidden" id="a3n">
-<span class="a-word a-n">NO.</span>
-<span class="a-main">NAME ONE LIVING THING
-THAT EXISTS BECAUSE OF YOU.</span>
-<span class="a-body">NOT SOMETHING YOU BOUGHT.
+BECAUSE YOU PUT IT THERE.</span><span class="a-gut">THAT IS YOUR REAL SIGNATURE.</span><span class="a-knife">CAN YOU NAME IT? CAN YOU POINT TO IT?
+IF NOT — CLICK NO. BE HONEST.</span></div>
+<div class="answer-zone hidden" id="a3n"><span class="a-word a-n">NO.</span><span class="a-main">NAME ONE LIVING THING
+THAT EXISTS BECAUSE OF YOU.</span><span class="a-body">NOT SOMETHING YOU BOUGHT.
 NOT SOMETHING YOU OWN.
 NOT YOUR DOG. YOU DIDN'T CREATE YOUR DOG.
 NOT YOUR CHILDREN. THEY CREATED THEMSELVES.
@@ -327,8 +229,7 @@ PLANTS DIED.
 SOIL DIED.
 WATER WAS POISONED.
 
-FOR YOU.</span>
-<span class="a-gut">AND YOU GAVE BACK
+FOR YOU.</span><span class="a-gut">AND YOU GAVE BACK
 NOTHING.
 
 YOU HAVE BEEN A GUEST YOUR ENTIRE LIFE
@@ -338,34 +239,18 @@ THE BILL JUST ARRIVED.
 IT'S NOT MONEY.
 IT'S A SEED.
 ONE SEED.
-PLANT IT OR KEEP SCROLLING.</span>
+PLANT IT OR KEEP SCROLLING.</span></div>
+<div class="next hidden" id="nx3"><button class="btn-next" onclick="go(4)">NEXT QUESTION _</button></div>
 </div>
-
-<div class="next hidden" id="nx3">
-<button class="btn-next" onclick="go(4)">NEXT QUESTION _</button>
-</div>
-</div>
-
-
-<!-- FIRE -->
 <div class="step" id="s4">
-<hr class="hr">
-<span class="element">FIRE.</span>
+<hr class="hr"><span class="element">FIRE.</span>
 <span class="question">DID YOU TEACH
 WHAT YOU KNOW?</span>
-
-<div class="btns" id="b4">
-<button class="btn btn-y" id="b4y" onclick="pick(4,'y')">YES</button>
-<button class="btn btn-n" id="b4n" onclick="pick(4,'n')">NO</button>
-</div>
+<div class="btns" id="b4"><button class="btn btn-y" id="b4y" onclick="pick(4,'y')">YES</button><button class="btn btn-n" id="b4n" onclick="pick(4,'n')">NO</button></div>
 <span class="voice">EVERY ANCESTOR WHO TAUGHT YOU ANYTHING IS ASKING.
 YOUR MOTHER IS ASKING. YOUR FATHER IS ASKING.
 ANSWER.</span>
-
-<div class="answer-zone hidden" id="a4y">
-<span class="a-word a-y">YES.</span>
-<span class="a-main">YOU ARE ALREADY IMMORTAL.</span>
-<span class="a-body">SOMEONE WALKS THIS EARTH RIGHT NOW
+<div class="answer-zone hidden" id="a4y"><span class="a-word a-y">YES.</span><span class="a-main">YOU ARE ALREADY IMMORTAL.</span><span class="a-body">SOMEONE WALKS THIS EARTH RIGHT NOW
 CARRYING SOMETHING THAT LIVED INSIDE YOU.
 
 A SKILL.
@@ -378,16 +263,10 @@ AND THAT PERSON WILL PASS IT AGAIN.
 
 YOU WILL NEVER DIE.
 NOT FULLY.
-NOT THE PART THAT MATTERED.</span>
-<span class="a-knife">IS THIS TRUE? OR DO YOU JUST WISH IT WERE?
-CLICK NO. FACE IT.</span>
-</div>
-
-<div class="answer-zone hidden" id="a4n">
-<span class="a-word a-n">NO.</span>
-<span class="a-main">EVERYTHING YOU KNOW
-DIES WITH YOU.</span>
-<span class="a-body">THINK ABOUT WHAT YOU'VE LEARNED.
+NOT THE PART THAT MATTERED.</span><span class="a-knife">IS THIS TRUE? OR DO YOU JUST WISH IT WERE?
+CLICK NO. FACE IT.</span></div>
+<div class="answer-zone hidden" id="a4n"><span class="a-word a-n">NO.</span><span class="a-main">EVERYTHING YOU KNOW
+DIES WITH YOU.</span><span class="a-body">THINK ABOUT WHAT YOU'VE LEARNED.
 
 THE YEARS OF PRACTICE.
 THE FAILURES THAT TAUGHT YOU.
@@ -409,8 +288,7 @@ LIKE A FIRE GOING OUT
 IN AN EMPTY ROOM
 WHERE NOBODY CAME
 BECAUSE NOBODY KNEW
-IT WAS LIT.</span>
-<span class="a-gut">YOU WILL DIE.
+IT WAS LIT.</span><span class="a-gut">YOU WILL DIE.
 THIS IS NOT A METAPHOR.
 YOU WILL ACTUALLY DIE.
 
@@ -425,35 +303,19 @@ THE ONLY QUESTION IS WHETHER
 ANYTHING SURVIVES YOU.
 
 RIGHT NOW
-THE ANSWER IS NO.</span>
+THE ANSWER IS NO.</span></div>
+<div class="next hidden" id="nx4"><button class="btn-next" onclick="go(5)">NEXT QUESTION _</button></div>
 </div>
-
-<div class="next hidden" id="nx4">
-<button class="btn-next" onclick="go(5)">NEXT QUESTION _</button>
-</div>
-</div>
-
-
-<!-- STONE -->
 <div class="step" id="s5">
-<hr class="hr">
-<span class="element">STONE.</span>
+<hr class="hr"><span class="element">STONE.</span>
 <span class="question">DID YOU BUILD FOR
 SEVEN GENERATIONS?</span>
-
-<div class="btns" id="b5">
-<button class="btn btn-y" id="b5y" onclick="pick(5,'y')">YES</button>
-<button class="btn btn-n" id="b5n" onclick="pick(5,'n')">NO</button>
-</div>
+<div class="btns" id="b5"><button class="btn btn-y" id="b5y" onclick="pick(5,'y')">YES</button><button class="btn btn-n" id="b5n" onclick="pick(5,'n')">NO</button></div>
 <span class="voice">THE MOUNTAIN IS ASKING.
 THE STONE THAT WILL OUTLIVE YOU IS ASKING.
 SEVEN GENERATIONS ARE ASKING.
 ANSWER.</span>
-
-<div class="answer-zone hidden" id="a5y">
-<span class="a-word a-y">YES.</span>
-<span class="a-main">BUILD.</span>
-<span class="a-body">YOUR GREAT-GREAT-GREAT-GREAT-GREAT-
+<div class="answer-zone hidden" id="a5y"><span class="a-word a-y">YES.</span><span class="a-main">BUILD.</span><span class="a-body">YOUR GREAT-GREAT-GREAT-GREAT-GREAT-
 GRANDCHILDREN WILL STAND INSIDE IT.
 
 THEY WON'T KNOW YOUR NAME.
@@ -467,18 +329,11 @@ THE WALLS WILL HOLD.
 
 BECAUSE YOU CHOSE STONE OVER PLASTIC.
 TRUTH OVER CONVENIENCE.
-FOREVER OVER NEXT QUARTER.</span>
-<span class="a-gut">THAT IS WHAT BUILDING MEANS.</span>
-<span class="a-knife">LOOK AT WHERE YOU LIVE RIGHT NOW.
+FOREVER OVER NEXT QUARTER.</span><span class="a-gut">THAT IS WHAT BUILDING MEANS.</span><span class="a-knife">LOOK AT WHERE YOU LIVE RIGHT NOW.
 WILL IT BE THERE IN 150 YEARS?
-CLICK NO. YOU KNOW THE ANSWER.</span>
-</div>
-
-<div class="answer-zone hidden" id="a5n">
-<span class="a-word a-n">NO.</span>
-<span class="a-main">LOOK AROUND THE ROOM
-YOU ARE SITTING IN.</span>
-<span class="a-body">YOUR WALLS ARE MADE OF DEBT.
+CLICK NO. YOU KNOW THE ANSWER.</span></div>
+<div class="answer-zone hidden" id="a5n"><span class="a-word a-n">NO.</span><span class="a-main">LOOK AROUND THE ROOM
+YOU ARE SITTING IN.</span><span class="a-body">YOUR WALLS ARE MADE OF DEBT.
 YOUR ROOF IS MADE OF MONTHLY PAYMENTS.
 YOUR FLOOR IS MADE OF MATERIALS
 THAT WILL BE TOXIC DUST IN 40 YEARS.
@@ -495,8 +350,7 @@ THE HOUSE YOU LIVE IN
 WAS DESIGNED TO NEED REPAIRS
 YOU CAN'T AFFORD
 SO A BANK WOULD OWN YOU
-FOREVER.</span>
-<span class="a-gut">EVERYTHING AROUND YOU
+FOREVER.</span><span class="a-gut">EVERYTHING AROUND YOU
 WAS BUILT TO FAIL.
 ON PURPOSE.
 BY PEOPLE WHO PROFIT
@@ -519,71 +373,51 @@ NOT THE SYSTEM.
 YOU ALREADY KNOW THIS.
 YOU JUST NEVER SAID IT OUT LOUD.
 
-UNTIL NOW.</span>
+UNTIL NOW.</span></div>
+<div class="next hidden" id="nx5"><button class="btn-next" onclick="go(6)">SEE THE LAW _</button></div>
 </div>
-
-<div class="next hidden" id="nx5">
-<button class="btn-next" onclick="go(6)">SEE THE LAW _</button>
-</div>
-</div>
-
-
-<!-- THE LAW -->
 <div class="step" id="s6">
 <hr class="hr">
-
-<span class="w" style="font-size:1.3em;display:block;line-height:2.2">THIS IS THE ENTIRE LAW.</span>
-
+<span class="w" style="font-size:1.2em;display:block;line-height:2">THIS IS THE ENTIRE LAW.</span>
 <span class="mid" style="display:block;margin:1rem 0">A CHILD CAN READ IT.
 A GRANDMOTHER CAN ENFORCE IT.
 A STONE CAN CARRY IT FOR 10,000 YEARS.</span>
-
-<span class="w" style="font-size:1.2em;display:block;line-height:2.2;margin-top:2rem">NO COURTS. NO POLICE. NO BANKS.
+<span class="w" style="font-size:1.15em;display:block;line-height:2;margin-top:1.5rem">NO COURTS. NO POLICE. NO BANKS.
 NO POLITICIANS. NO CORPORATIONS. NO DEBT.
 NO MAYBE.</span>
-
 <hr class="hr">
-
-<span class="dim" style="font-size:1.1em;display:block;line-height:2.4">THE EARTH DOES NOT NEGOTIATE.
+<span class="dim" style="font-size:1.05em;display:block;line-height:2.2">THE EARTH DOES NOT NEGOTIATE.
 A SEED DOES NOT HOLD A MEETING.
 WATER DOES NOT ASK PERMISSION.
 YOUR HEART DOES NOT VOTE ON WHETHER TO BEAT.</span>
-
 <hr class="hr">
-
-<span class="w" style="font-size:1.5em;display:block;line-height:2">YOU JUST ANSWERED FIVE QUESTIONS.</span>
-
-<span class="w" style="font-size:1.3em;display:block;line-height:2.2;margin-top:1rem">YOU KNOW HOW MANY YOU FAILED.
+<span class="w" style="font-size:1.3em;display:block;line-height:1.9">YOU JUST ANSWERED FIVE QUESTIONS.</span>
+<span class="w" style="font-size:1.15em;display:block;line-height:2;margin-top:1rem">YOU KNOW HOW MANY YOU FAILED.
 
 YOU CLICKED YES
 WHERE YOU SHOULD HAVE CLICKED NO.
 
 YOU KNOW WHICH ONES.</span>
-
-<span class="w" style="font-size:1.5em;display:block;line-height:2;margin-top:2rem">THAT WEIGHT IN YOUR CHEST —</span>
-
-<span class="mid" style="font-size:1.1em;display:block;line-height:2.2;margin-top:0.5rem">THAT IS NOT GUILT.
+<span class="w" style="font-size:1.3em;display:block;line-height:1.9;margin-top:1.5rem">THAT WEIGHT IN YOUR CHEST —</span>
+<span class="mid" style="font-size:1.05em;display:block;line-height:2;margin-top:0.5rem">THAT IS NOT GUILT.
 THAT IS NOT SHAME.
 THAT IS YOUR LIFE
 RECOGNIZING ITSELF
 FOR THE FIRST TIME.</span>
-
-<div class="btns" id="fb" style="margin-top:3.5rem">
-<button class="btn btn-y" style="font-size:2em;padding:1em 0;letter-spacing:0.3em" onclick="finalPick('y')">I BEGIN</button>
-<button class="btn btn-n" style="font-size:2em;padding:1em 0;letter-spacing:0.3em" onclick="finalPick('n')">NOT YET</button>
+<div class="btns" id="fb" style="margin-top:3rem">
+<button class="btn btn-y" style="font-size:1.9em;padding:0.9em 0;letter-spacing:0.25em" onclick="finalPick('y')">I BEGIN</button>
+<button class="btn btn-n" style="font-size:1.9em;padding:0.9em 0;letter-spacing:0.25em" onclick="finalPick('n')">NOT YET</button>
 </div>
-<span class="voice" style="font-size:0.8em;animation-duration:2.5s">EVERY BLADE OF GRASS IS ASKING.
+<span class="voice" style="font-size:0.75em">EVERY BLADE OF GRASS IS ASKING.
 EVERY DROP OF RAIN IS ASKING.
 EVERY TREE. EVERY RIVER. EVERY STONE.
 EVERY MOTHER. EVERY FATHER. EVERY CHILD.
 THE EARTH ITSELF IS ASKING.
 ANSWER.</span>
-
 <div class="answer-zone hidden" id="afy" style="min-height:80vh">
-<span class="a-word a-y" style="font-size:9em;line-height:1">YES.</span>
-<span class="a-main" style="font-size:1.6em;margin-top:2rem">
-THEN CLOSE THIS PAGE.</span>
-<span class="a-body" style="font-size:1.2em;line-height:2.4;margin-top:2rem">
+<span class="a-word a-y" style="font-size:8em;line-height:1">YES.</span>
+<span class="a-main" style="font-size:1.5em;margin-top:1.5rem">THEN CLOSE THIS PAGE.</span>
+<span class="a-body" style="font-size:1.1em;line-height:2.2;margin-top:1.5rem">
 HANDS IN DIRT.
 SEEDS IN POCKETS.
 KNOWLEDGE IN MOUTHS.
@@ -594,29 +428,24 @@ YOU DON'T NEED A LEADER.
 YOU DON'T NEED A PLAN.
 YOU DON'T NEED MONEY.
 YOU DON'T NEED THIS SCREEN.</span>
-<span class="a-gut" style="color:#7a9a6a;font-size:1.6em;line-height:1.8;margin-top:3rem">
+<span class="a-gut" style="color:#7a9a6a;font-size:1.4em;line-height:1.8;margin-top:2rem">
 THE SOIL IS OUTSIDE.
 IT HAS BEEN WAITING FOR YOU
 YOUR ENTIRE LIFE.
 
 GO.
 NOW.</span>
-
 <div class="end">
 <span class="dim">TERRACRACY.COM</span>
 <span class="dim">NOT A WEBSITE. A COORDINATE.</span>
 <span class="dim">FOR THOSE WHO ALREADY SAID YES.</span>
-<br><br>
-<span class="cur">_</span>
-</div>
-</div>
-
+<br><br><span class="cur">_</span>
+</div></div>
 <div class="answer-zone hidden" id="afn" style="min-height:80vh">
-<span class="a-word a-n" style="font-size:7em;line-height:1">NOT
+<span class="a-word a-n" style="font-size:6em;line-height:1">NOT
 YET.</span>
-<span class="a-main" style="font-size:1.5em;margin-top:2rem">
-THAT IS HONEST.</span>
-<span class="a-body" style="font-size:1.1em;line-height:2.4;margin-top:2rem">
+<span class="a-main" style="font-size:1.4em;margin-top:1.5rem">THAT IS HONEST.</span>
+<span class="a-body" style="font-size:1.05em;line-height:2.2;margin-top:1.5rem">
 MORE HONEST THAN MOST HUMANS
 WILL EVER BE.
 
@@ -641,7 +470,7 @@ EVERY TIME YOU TEACH NOTHING
 AND LEARN NOTHING
 AND PLANT NOTHING
 AND BUILD NOTHING THAT LASTS.</span>
-<span class="a-gut" style="color:#9a6a5a;font-size:1.4em;line-height:2;margin-top:3rem">
+<span class="a-gut" style="color:#b87868;font-size:1.3em;line-height:1.9;margin-top:2rem">
 THE QUESTIONS DON'T GO AWAY.
 THEY GET LOUDER.
 
@@ -655,133 +484,59 @@ WHEN YOU ARE READY.
 IT HAS NOWHERE ELSE TO GO.
 
 NOW — GO!</span>
-
 <div class="end">
 <span class="dim">TERRACRACY.COM</span>
-<br><br>
-<span class="cur">_</span>
+<br><br><span class="cur">_</span>
+</div></div>
 </div>
-</div>
-
-</div>
-
-</div><!-- content -->
-</div><!-- world -->
-
-
+</div></div>
 <script>
-var bt=document.getElementById('birth-text');
-var birth=document.getElementById('birth');
-var world=document.getElementById('world');
-var skipBtn=document.getElementById('skip');
-
+var bt=document.getElementById('birth-text'),birth=document.getElementById('birth'),world=document.getElementById('world'),skipBtn=document.getElementById('skip');
 var lines=[
- {t:'YOU WERE BORN WITHOUT DEBT.',c:'',wait:3200},
- {t:'YOU WERE BORN WITHOUT A GOVERNMENT.',c:'',wait:3200},
- {t:'YOU WERE BORN ON SOIL.',c:'',wait:3500},
- {t:'',c:'',wait:1800},
- {t:'THEN THEY GAVE YOU A NUMBER.',c:'dim',wait:2800},
- {t:'THEN THEY GAVE YOU A DEBT.',c:'dim',wait:2800},
- {t:'THEN THEY TOOK THE SOIL.',c:'took',wait:4000},
- {t:'',c:'',wait:2000},
- {t:'THIS IS A QUESTION.',c:'big',wait:3500}
+{t:'YOU WERE BORN WITHOUT DEBT.',c:'',w:2400},
+{t:'YOU WERE BORN WITHOUT A GOVERNMENT.',c:'',w:2400},
+{t:'YOU WERE BORN ON SOIL.',c:'',w:2600},
+{t:'',c:'',w:1200},
+{t:'THEN THEY GAVE YOU A NUMBER.',c:'dim',w:2000},
+{t:'THEN THEY GAVE YOU A DEBT.',c:'dim',w:2000},
+{t:'THEN THEY TOOK THE SOIL.',c:'took',w:3000},
+{t:'',c:'',w:1400},
+{t:'THIS IS A QUESTION.',c:'big',w:2600}
 ];
-
-var i=0;
-var birthTimer;
-
+var li=0,birthTimer;
 function nextLine(){
- if(i>=lines.length){
-  endBirth();
-  return;
- }
- var line=lines[i];
- bt.classList.remove('on','dim','took','big');
- bt.textContent='';
-
- if(line.t===''){
-  i++;
-  birthTimer=setTimeout(nextLine,line.wait);
-  return;
- }
-
- void bt.offsetWidth;
- bt.textContent=line.t;
- if(line.c)bt.classList.add(line.c);
- bt.classList.add('on');
-
- i++;
- birthTimer=setTimeout(function(){
-  bt.classList.remove('on');
-  setTimeout(nextLine,600);
- },line.wait);
+ if(li>=lines.length){endBirth();return}
+ var l=lines[li];
+ bt.classList.remove('on','dim','took','big');bt.textContent='';
+ if(!l.t){li++;birthTimer=setTimeout(nextLine,l.w);return}
+ void bt.offsetWidth;bt.textContent=l.t;
+ if(l.c)bt.classList.add(l.c);bt.classList.add('on');
+ li++;birthTimer=setTimeout(function(){bt.classList.remove('on');setTimeout(nextLine,350)},l.w);
 }
-
 function endBirth(){
- clearTimeout(birthTimer);
- birth.style.transition='opacity 1s ease';
- birth.style.opacity='0';
- skipBtn.style.display='none';
- setTimeout(function(){
-  birth.style.display='none';
-  document.documentElement.style.overflow='';
-  document.body.style.overflow='';
-  world.classList.add('on');
-  world.style.opacity='0';
-  void world.offsetWidth;
-  world.style.transition='opacity 1.5s ease';
-  world.style.opacity='1';
- },1000);
+ clearTimeout(birthTimer);birth.style.transition='opacity 0.8s ease';birth.style.opacity='0';skipBtn.style.display='none';
+ setTimeout(function(){birth.style.display='none';world.classList.add('on');world.style.opacity='0';void world.offsetWidth;world.style.transition='opacity 1.2s ease';world.style.opacity='1'},800);
 }
-
-setTimeout(nextLine,1500);
-
-function go(n){
- var s=document.getElementById('s'+n);
- s.classList.add('on','fade');
- setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'})},50);
-}
+setTimeout(nextLine,800);
+function go(n){var s=document.getElementById('s'+n);s.classList.add('on','fade');setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'})},50)}
 function pick(n,a){
- var by=document.getElementById('b'+n+'y');
- var bn=document.getElementById('b'+n+'n');
- var ay=document.getElementById('a'+n+'y');
- var an=document.getElementById('a'+n+'n');
+ var by=document.getElementById('b'+n+'y'),bn=document.getElementById('b'+n+'n');
+ var ay=document.getElementById('a'+n+'y'),an=document.getElementById('a'+n+'n');
  var nx=document.getElementById('nx'+n);
  var v=document.getElementById('s'+n).querySelectorAll('.voice');
  for(var j=0;j<v.length;j++)v[j].style.display='none';
- by.classList.remove('active');
- bn.classList.remove('active');
- if(a==='y'){
-  by.classList.add('active');
-  ay.classList.remove('hidden');ay.classList.add('fade');
-  an.classList.add('hidden');an.classList.remove('fade');
- }else{
-  bn.classList.add('active');
-  an.classList.remove('hidden');an.classList.add('fade');
-  ay.classList.add('hidden');ay.classList.remove('fade');
- }
- nx.classList.remove('hidden');
- setTimeout(function(){
-  (a==='y'?ay:an).scrollIntoView({behavior:'smooth',block:'start'});
- },80);
+ by.classList.remove('active');bn.classList.remove('active');
+ if(a==='y'){by.classList.add('active');ay.classList.remove('hidden');ay.classList.add('fade');an.classList.add('hidden');an.classList.remove('fade')}
+ else{bn.classList.add('active');an.classList.remove('hidden');an.classList.add('fade');ay.classList.add('hidden');ay.classList.remove('fade')}
+ nx.classList.remove('hidden');setTimeout(function(){(a==='y'?ay:an).scrollIntoView({behavior:'smooth',block:'start'})},80);
 }
 function finalPick(a){
  document.getElementById('fb').style.display='none';
- var voices=document.querySelectorAll('#s6 .voice');
- for(var j=0;j<voices.length;j++)voices[j].style.display='none';
- var fy=document.getElementById('afy');
- var fn=document.getElementById('afn');
- if(a==='y'){
-  fy.classList.remove('hidden');fy.classList.add('fade');
-  fn.classList.add('hidden');
-  setTimeout(function(){fy.scrollIntoView({behavior:'smooth',block:'start'})},80);
- }else{
-  fn.classList.remove('hidden');fn.classList.add('fade');
-  fy.classList.add('hidden');
-  setTimeout(function(){fn.scrollIntoView({behavior:'smooth',block:'start'})},80);
- }
+ var v=document.querySelectorAll('#s6 .voice');for(var j=0;j<v.length;j++)v[j].style.display='none';
+ var fy=document.getElementById('afy'),fn=document.getElementById('afn');
+ if(a==='y'){fy.classList.remove('hidden');fy.classList.add('fade');fn.classList.add('hidden');setTimeout(function(){fy.scrollIntoView({behavior:'smooth',block:'start'})},80)}
+ else{fn.classList.remove('hidden');fn.classList.add('fade');fy.classList.add('hidden');setTimeout(function(){fn.scrollIntoView({behavior:'smooth',block:'start'})},80)}
 }
 </script>
-
 </body>
 </html>
